@@ -241,6 +241,10 @@
     100% {
         transform: translateX(0) translateY(20%);
         opacity: 1;
+        @media(max-width: $md) {
+            transform: translateX(0) translateY(10%);
+
+        }
     }
 }
 
