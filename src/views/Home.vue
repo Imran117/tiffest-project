@@ -37,6 +37,10 @@
         <p class="home__content-subtext">“Жемчужина шелкового пути”</p>
       </div>
     </div>
+    <button class="home__scroll">
+        Scroll&nbsp;Down
+        <img src="@/assets/images/scroll-arrow.svg" alt="">
+    </button>
   </section>
 </template>
 
