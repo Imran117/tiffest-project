@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://github.com/Imran117/tiffest-project.git',
+  base: '/tiffest-project/',
   plugins: [vue()],
   resolve: {
     alias: {
