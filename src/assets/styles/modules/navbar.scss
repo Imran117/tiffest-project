@@ -1,6 +1,7 @@
 .header {
     position: relative;
     z-index: 9999;
+
     &__burger {
         position: absolute;
         top: 25px;
@@ -12,6 +13,7 @@
             display: block;
         }
     }
+
     &__bar {
         position: fixed;
         top: 60px;
