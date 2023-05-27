@@ -23,10 +23,7 @@
     </div>
     <div class="home__content">
       <div class="home__content-statue">
-        <img
-          src="@/assets/images/parallax-image/parallax-kub.png"
-          alt=""
-        />
+        <img src="@/assets/images/parallax-image/parallax-kub.png" alt="" />
       </div>
 
       <div class="home__content-txt">
@@ -38,8 +35,8 @@
       </div>
     </div>
     <button class="home__scroll">
-        Scroll&nbsp;Down
-        <img src="@/assets/images/scroll-arrow.svg" alt="">
+      Scroll&nbsp;Down
+      <img src="@/assets/images/scroll-arrow.svg" alt="" />
     </button>
   </section>
 </template>
@@ -63,7 +60,7 @@ export default {
     },
   },
 
-  created() {}
+  created() {},
 };
 </script>
 

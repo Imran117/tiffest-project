@@ -10,6 +10,10 @@ const router = createRouter({
         {
             path: '/',
             component: HomeVue
+        },
+        {
+            path: '/Tiffest',
+            component: () => import('@/views/Tiffest.vue')
         }
     ]
 })

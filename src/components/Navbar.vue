@@ -6,22 +6,22 @@
     <nav class="header__nav">
       <ul class="header__nav-list">
         <li>
-          <router-link class="header__nav-link" to="Tiffest"
+          <router-link class="header__nav-link" to="/Tiffest"
             >TIFFEST-22</router-link
           >
         </li>
         <li>
-          <router-link class="header__nav-link" to="Program"
+          <router-link class="header__nav-link" to="/Program"
             >Программа</router-link
           >
         </li>
         <li>
-          <router-link class="header__nav-link" to="Movie-show"
+          <router-link class="header__nav-link" to="/Movie-show"
             >Кинопоказы</router-link
           >
         </li>
         <li>
-          <router-link class="header__nav-link" to="Location"
+          <router-link class="header__nav-link" to="/Location"
             >Локации</router-link
           >
         </li>
@@ -47,35 +47,35 @@
           @click="changeIsOpen('isOpenMore')"
         >
           <li>
-            <router-link class="header__nav-link" to="Premiers"
+            <router-link class="header__nav-link" to="/Premiers"
               >Премьеры</router-link
             >
           </li>
           <li>
             <router-link
               class="header__nav-link header__nav-droplink"
-              to="Faces"
+              to="/Faces"
               >Лица</router-link
             >
           </li>
           <li>
             <router-link
               class="header__nav-link header__nav-droplink"
-              to="Media"
+              to="/Media"
               >Медиа</router-link
             >
           </li>
           <li>
             <router-link
               class="header__nav-link header__nav-droplink"
-              to="History"
+              to="/History"
               >История</router-link
             >
           </li>
           <li>
             <router-link
               class="header__nav-link header__nav-droplink"
-              to="Master-classes"
+              to="/Master-classes"
               >Мастер-классы</router-link
             >
           </li>
