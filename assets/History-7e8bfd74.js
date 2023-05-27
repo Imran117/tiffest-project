@@ -1,1 +1,0 @@
-import{_ as t}from"./proba-6e27e3e4.js";import{_ as e,o as s,c as o,a as c}from"./index-169347bb.js";const r={},i={class:"tiffest",style:{height:"100vh",width:"100%",overflow:"hidden"}},_=c("img",{style:{width:"100%",height:"100%"},src:t,alt:""},null,-1),a=[_];function n(d,h,l,f,p,m){return s(),o("section",i,a)}const g=e(r,[["render",n]]);export{g as default};
