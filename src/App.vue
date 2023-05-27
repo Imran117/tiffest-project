@@ -1,41 +1,90 @@
-<template>
-  <div class="wrapper" @scroll="getPage">
+<template >
+  <div class="wrapper">
     <header class="header">
       <button class="header__burger" @click="changeIsOpen('isOpenbar')">
         <img src="@/assets/images/burger.svg" alt="" />
       </button>
-      <Navbar />
+      <Navbar :pageIndecators="pageIndecators" />
     </header>
     <div class="wrapper__content">
       <router-view v-slot="{ Component }">
         <transition name="slide" mode="out-in">
-          <component :is="Component"/>
+          <component :is="Component" />
         </transition>
       </router-view>
     </div>
   </div>
 </template>
 
-
 <script>
 import Navbar from "@/components/Navbar.vue";
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 export default {
   components: {
     Navbar,
   },
   data() {
-    return {};
+    return {
+      pageNum: 0,
+      pageIndecators: false,
+      currentPathUrl: "/",
+    };
   },
   methods: {
     ...mapMutations(["changeIsOpen"]),
 
     getPage() {
-      console.log(1);
+      if (scrollY >= 28) {
+        if (this.pageNum < this.links.length - 1) {
+          this.pageNum++;
+        } else {
+          this.pageNum = 0;
+        }
+      } else if (scrollY <= 0) {
+        if (this.pageNum > 0) {
+          this.pageNum--;
+        } else {
+          this.pageNum = this.links.length - 1;
+        }
+      }
+      this.$router.push({ path: `${this.links[this.pageNum]}` });
+    },
+
+    trueOrFalseNav() {
+      this.pageIndecators = this.$route.path !== "/" ? true : false;
+      this.currentPathUrl = this.$route.path;
+      this.pageNum = this.links.indexOf(this.currentPathUrl);
+    },
+  },
+
+  computed: {
+    ...mapState(["links"]),
+  },
+
+  mounted() {
+    window.addEventListener("scroll", () => this.getPage());
+  },
+
+  watch: {
+    $route() {
+      this.trueOrFalseNav();
     },
   },
 };
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style lang="scss">
 @import "@/assets/styles/main.scss";

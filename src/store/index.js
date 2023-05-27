@@ -7,6 +7,7 @@ const store = createStore({
         isOpenLang: false,
         isOpenMore: false,
         isOpenBar: false,
+        links: ["/", "/Tiffest", "/Program", "/Movie-show", "/Location", "/Premiers", "/Faces", "/Media", "/History", "/Master-classes", "/News"]
     },
     mutations: {
         changeLang(state, payload) {
@@ -14,7 +15,7 @@ const store = createStore({
 
         },
         changeIsOpen(state, payload) {
-            state[payload]= !state[payload]
+            state[payload] = !state[payload]
         },
     },
     actions: {},

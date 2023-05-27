@@ -1,10 +1,16 @@
 <template>
-  <div :class="['header__bar', {active: isOpenbar}]">
+  <div
+    :class="[
+      'header__bar',
+      { active: isOpenbar },
+      { 'left-bar': pageIndecators },
+    ]"
+  >
     <router-link to="/" class="header__bar-logo">
       <img src="@/assets/images/logo.png" alt="" />
     </router-link>
-    <nav class="header__nav">
-      <ul class="header__nav-list">
+    <nav :class="['header__nav', { 'left-position': pageIndecators }]">
+      <ul :class="['header__nav-list', { 'left-list': pageIndecators }]">
         <li>
           <router-link class="header__nav-link" to="/Tiffest"
             >TIFFEST-22</router-link
@@ -26,7 +32,9 @@
           >
         </li>
       </ul>
-      <div class="header__nav-dropmenu">
+      <div
+        :class="['header__nav-dropmenu', { 'left-dropmenu': pageIndecators }]"
+      >
         <button
           class="header__nav-dropdown"
           @click="changeIsOpen('isOpenMore')"
@@ -43,6 +51,7 @@
             'header__nav-list',
             'header__nav-droplist',
             { active: isOpenMore },
+            { 'left-list': pageIndecators },
           ]"
           @click="changeIsOpen('isOpenMore')"
         >
@@ -80,13 +89,15 @@
             >
           </li>
           <li>
-            <router-link class="header__nav-link header__nav-droplink" to="News"
+            <router-link
+              class="header__nav-link header__nav-droplink"
+              to="/News"
               >Новости</router-link
             >
           </li>
         </ul>
       </div>
-      <div class="header__nav-right">
+      <div :class="['header__nav-right', { 'left-social': pageIndecators }]">
         <a
           class="header__nav-social"
           href="https://www.instagram.com/tiffest_official/"
@@ -194,7 +205,7 @@
       </div>
     </nav>
     <button class="header__bar-btn" @click="changeIsOpen('isOpenbar')">
-      <img src="@/assets/images/close-btn.svg" alt="">
+      <img src="@/assets/images/close-btn.svg" alt="" />
     </button>
   </div>
 </template>
@@ -202,6 +213,12 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 export default {
+  props: {
+    pageIndecators: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       currentComponent: "Home",
@@ -209,10 +226,21 @@ export default {
   },
   methods: {
     ...mapMutations(["changeLang", "changeIsOpen"]),
+
+
   },
   computed: {
-    ...mapState(["links", "currentLang", "langs", "isOpenLang", "isOpenMore", "isOpenbar"]),
+    ...mapState([
+      "links",
+      "currentLang",
+      "langs",
+      "isOpenLang",
+      "isOpenMore",
+      "isOpenbar",
+    ]),
   },
+
+  
 };
 </script>
 
