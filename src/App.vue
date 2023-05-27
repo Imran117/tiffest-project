@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       pageNum: 0,
+      controlScroll: false,
       pageIndecators: false,
       currentPathUrl: "/",
     };
@@ -34,7 +35,7 @@ export default {
     ...mapMutations(["changeIsOpen"]),
 
     getPage() {
-      if (scrollY >= 28) {
+      if (this.controlScroll) {
         if (this.pageNum < this.links.length - 1) {
           this.pageNum++;
         } else {
@@ -47,13 +48,36 @@ export default {
           this.pageNum = this.links.length - 1;
         }
       }
-      this.$router.push({ path: `${this.links[this.pageNum]}` });
+      this.$router.push({ path: `${this.links[this.pageNum]}`});
     },
 
     trueOrFalseNav() {
-      this.pageIndecators = this.$route.path !== "/" ? true : false;
+      if (window.innerWidth > 768) {
+        this.pageIndecators = this.$route.path !== "/" ? true : false;
+      }
       this.currentPathUrl = this.$route.path;
       this.pageNum = this.links.indexOf(this.currentPathUrl);
+    },
+
+    changeScrollSize() {
+      const wrapper = document.querySelector(".wrapper");
+      const fullHeight = window.innerHeight;
+
+      this.controlScroll =
+        fullHeight + scrollY == wrapper.clientHeight ? true : false;
+
+      if (this.controlScroll) {
+        wrapper.style = `
+        overflow:hidden;
+        `;
+        setTimeout(() => {
+          wrapper.style = `
+          overflow:auto;
+          `;
+        }, 2000);
+      }
+
+      this.getPage();
     },
   },
 
@@ -62,7 +86,8 @@ export default {
   },
 
   mounted() {
-    window.addEventListener("scroll", () => this.getPage());
+    window.addEventListener("scroll", () => this.changeScrollSize());
+    this.changeScrollSize();
   },
 
   watch: {
